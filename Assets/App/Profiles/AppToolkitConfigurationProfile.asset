@@ -15,12 +15,12 @@ MonoBehaviour:
   isCustomProfile: 1
   targetExperienceScale: 3
   enableCameraSystem: 1
-  cameraProfile: {fileID: 11400000, guid: 8089ccfdd4494cd38f676f9fc1f46a04, type: 2}
+  cameraProfile: {fileID: 11400000, guid: 6f296e0b853e89841a1cd76916969d75, type: 2}
   cameraSystemType:
     reference: Microsoft.MixedReality.Toolkit.CameraSystem.MixedRealityCameraSystem,
       Microsoft.MixedReality.Toolkit.Services.CameraSystem
   enableInputSystem: 1
-  inputSystemProfile: {fileID: 11400000, guid: ad2080e8e71c35f4e8bcde94fa68f098, type: 2}
+  inputSystemProfile: {fileID: 11400000, guid: b2216f912c501fe45b9f7734519ba7e1, type: 2}
   inputSystemType:
     reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityInputSystem, Microsoft.MixedReality.Toolkit.Services.InputSystem
   enableBoundarySystem: 1
