@@ -593,16 +593,16 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: Template3D
+  metroPackageName: QRCodeService
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 00c7cb8fb313d801
-  metroApplicationDescription: Template_3D
+  metroApplicationDescription: QRCodeService
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: QRCodeService
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -626,7 +626,7 @@ PlayerSettings:
       CodeGeneration: False
       Contacts: False
       EnterpriseAuthentication: False
-      GazeInput: False
+      GazeInput: True
       HumanInterfaceDevice: False
       InputInjectionBrokered: False
       InternetClient: True
@@ -647,7 +647,7 @@ PlayerSettings:
       RemoteSystem: False
       RemovableStorage: False
       SharedUserCertificates: False
-      SpatialPerception: False
+      SpatialPerception: True
       SystemManagement: False
       UserAccountInformation: False
       UserDataTasks: False
