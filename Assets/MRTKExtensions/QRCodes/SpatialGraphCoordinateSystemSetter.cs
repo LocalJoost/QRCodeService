@@ -15,7 +15,7 @@ namespace MRTKExtensions.QRCodes
         public EventHandler<Pose> PositionAcquired;
         public EventHandler PositionAcquisitionFailed;
 
-        private Tuple<Guid, float> locationIdSize = null;
+        private Queue<Tuple<Guid, float>> locationIdSizes = new Queue<Tuple<Guid, float>>();
 
         private PositionalLocatorState CurrentState { get; set; }
 
@@ -39,18 +39,15 @@ namespace MRTKExtensions.QRCodes
 
         public void SetLocationIdSize(Guid spatialGraphNodeId, float physicalSideLength)
         {
-            if (locationIdSize == null)
-            {
-                locationIdSize = new Tuple<Guid, float>(spatialGraphNodeId, physicalSideLength);
-            }
+            locationIdSizes.Enqueue(new Tuple<Guid, float>(spatialGraphNodeId, physicalSideLength));
         }
 
         void Update()
         {
-            if (locationIdSize != null)
+            if (locationIdSizes.Any())
             {
+                var locationIdSize = locationIdSizes.Dequeue();
                 UpdateLocation(locationIdSize.Item1, locationIdSize.Item2);
-                locationIdSize = null;
             }
         }
 
@@ -120,8 +117,32 @@ namespace MRTKExtensions.QRCodes
             var deltaToCenter = physicalSideLength * 0.5f;
             pose.position += (pose.rotation * (deltaToCenter * Vector3.right) -
                               pose.rotation * (deltaToCenter * Vector3.forward));
-            gameObject.transform.SetPositionAndRotation(pose.position, pose.rotation);
-            PositionAcquired?.Invoke(this, pose);
+            CheckPosition(pose);
+        }
+
+        private Pose? lastPose;
+
+        private void CheckPosition(Pose pose)
+        {
+            if (lastPose == null)
+            {
+                lastPose = pose;
+                return;
+            }
+
+            if (Mathf.Abs(Quaternion.Dot(lastPose.Value.rotation, pose.rotation)) > 0.99f &&
+                Vector3.Distance(lastPose.Value.position, pose.position) < 0.5f)
+            {
+                locationIdSizes.Clear();
+                lastPose = null;
+                gameObject.transform.SetPositionAndRotation(pose.position, pose.rotation);
+                PositionAcquired?.Invoke(this, pose);
+            }
+            else
+            {
+                lastPose = pose;
+            }
         }
     }
+
 }
