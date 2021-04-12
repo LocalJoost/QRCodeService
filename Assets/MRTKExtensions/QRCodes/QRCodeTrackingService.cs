@@ -41,7 +41,6 @@ namespace MRTKExtensions.QRCodes
 
         public override void Initialize()
         {
-            base.Initialize();
             _ = InitializeTracker();
         }
 
