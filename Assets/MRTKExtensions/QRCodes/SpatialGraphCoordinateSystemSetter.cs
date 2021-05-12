@@ -3,39 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using UnityEngine;
-using UnityEngine.XR.WSA;
 #if WINDOWS_UWP
-using Windows.Perception.Spatial;
 #endif
 
 namespace MRTKExtensions.QRCodes
 {
-    public class SpatialGraphCoordinateSystemSetter : MonoBehaviour
+    public abstract class SpatialGraphCoordinateSystemSetter : MonoBehaviour
     {
         public EventHandler<Pose> PositionAcquired;
-        public EventHandler PositionAcquisitionFailed;
+        public EventHandler PositionAcquisitionFailed; 
 
         private Queue<Tuple<Guid, float>> locationIdSizes = new Queue<Tuple<Guid, float>>();
-
-        private PositionalLocatorState CurrentState { get; set; }
-
-
-        void Awake()
-        {
-            CurrentState = PositionalLocatorState.Unavailable;
-        }
-
-        void Start()
-        {
-            WorldManager.OnPositionalLocatorStateChanged += WorldManager_OnPositionalLocatorStateChanged;
-            CurrentState = WorldManager.state;
-        }
-
-        private void WorldManager_OnPositionalLocatorStateChanged(PositionalLocatorState oldState, PositionalLocatorState newState)
-        {
-            CurrentState = newState;
-            gameObject.SetActive(newState == PositionalLocatorState.Active);
-        }
 
         public void SetLocationIdSize(Guid spatialGraphNodeId, float physicalSideLength)
         {
@@ -51,37 +29,15 @@ namespace MRTKExtensions.QRCodes
             }
         }
 
-        private void UpdateLocation(Guid spatialGraphNodeId, float physicalSideLength)
+        protected abstract void UpdateLocation(Guid spatialGraphNodeId, float physicalSideLength);
+
+        protected void CalculatePosition(System.Numerics.Matrix4x4? relativePose, float physicalSideLength)
         {
-            if (CurrentState != PositionalLocatorState.Active)
-            {
-                PositionAcquisitionFailed?.Invoke(this, null);
-                return;
-            }
-
-            System.Numerics.Matrix4x4? relativePose = System.Numerics.Matrix4x4.Identity;
-#if WINDOWS_UWP
-
-            SpatialCoordinateSystem coordinateSystem = Windows.Perception.Spatial.Preview.SpatialGraphInteropPreview.CreateCoordinateSystemForNode(spatialGraphNodeId);
-
-            if (coordinateSystem == null)
-            {
-                PositionAcquisitionFailed?.Invoke(this, null);
-                return;
-            }
-
-            SpatialCoordinateSystem rootSpatialCoordinateSystem = (SpatialCoordinateSystem)System.Runtime.InteropServices.Marshal.GetObjectForIUnknown(WorldManager.GetNativeISpatialCoordinateSystemPtr());
-
-            // Get the relative transform from the unity origin
-            relativePose = coordinateSystem.TryGetTransformTo(rootSpatialCoordinateSystem);
-#endif
-
             if (relativePose == null)
             {
                 PositionAcquisitionFailed?.Invoke(this, null);
                 return;
             }
-
             System.Numerics.Matrix4x4 newMatrix = relativePose.Value;
 
             // Platform coordinates are all right handed and unity uses left handed matrices. so we convert the matrix
@@ -110,6 +66,12 @@ namespace MRTKExtensions.QRCodes
             {
                 pose = pose.GetTransformedBy(CameraCache.Main.transform.parent);
             }
+            
+            MovePoseToCenter(pose,physicalSideLength);
+        }
+
+        protected void MovePoseToCenter(Pose pose,float physicalSideLength)
+        {
             // Rotate 90 degrees 'forward' over 'right' so 'up' is pointing straight up from the QR code
             pose.rotation *= Quaternion.Euler(90, 0, 0);
 
@@ -144,5 +106,4 @@ namespace MRTKExtensions.QRCodes
             }
         }
     }
-
 }

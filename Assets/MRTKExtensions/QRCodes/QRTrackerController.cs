@@ -16,8 +16,7 @@ namespace MRTKExtensions.QRCodes
         private AudioSource audioSource;
         private GameObject markerDisplay;
         private QRInfo lastMessage;
-        private int trackingCounter;
-
+   
         public bool IsTrackingActive { get; private set; } = true;
 
         private IQRCodeTrackingService qrCodeTrackingService;
