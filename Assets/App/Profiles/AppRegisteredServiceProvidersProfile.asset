@@ -13,11 +13,4 @@ MonoBehaviour:
   m_Name: AppRegisteredServiceProvidersProfile
   m_EditorClassIdentifier: 
   isCustomProfile: 1
-  configurations:
-  - componentType:
-      reference: MRTKExtensions.QRCodes.QRCodeTrackingService, Assembly-CSharp
-    componentName: QRCodeTrackingService
-    priority: 10
-    runtimePlatform: 8
-    configurationProfile: {fileID: 11400000, guid: 6f0177b1a3d0d5149893c0c5f6b71e4f,
-      type: 2}
+  configurations: []

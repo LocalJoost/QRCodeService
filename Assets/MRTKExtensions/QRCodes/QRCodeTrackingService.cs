@@ -7,17 +7,19 @@ using Microsoft.MixedReality.QR;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using Microsoft.MixedReality.Toolkit;
 using MRKTExtensions.Utilities;
+using RealityCollective.ServiceFramework.Services;
 using UnityEngine;
 
 namespace MRTKExtensions.QRCodes
 {
-    [MixedRealityExtensionService(SupportedPlatforms.WindowsUniversal)]
-    public class QRCodeTrackingService : BaseExtensionService, IQRCodeTrackingService
+    [System.Runtime.InteropServices.Guid("dd1c8edc-8888-4510-872a-ced01fca424a")]
+    public class QRCodeTrackingService : BaseServiceWithConstructor, IQRCodeTrackingService
     {
         private QRCodeTrackingServiceProfile profile;
-        public QRCodeTrackingService(string name, uint priority, BaseMixedRealityProfile profile) : base(name, priority, profile)
+        public QRCodeTrackingService(string name, uint priority, QRCodeTrackingServiceProfile profile) 
+            : base(name, priority)
         {
-            this.profile = (QRCodeTrackingServiceProfile) profile;
+            this.profile = profile;
         }
 
         public event EventHandler Initialized;

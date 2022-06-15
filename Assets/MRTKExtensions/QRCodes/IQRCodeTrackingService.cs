@@ -1,9 +1,9 @@
 using System;
-using Microsoft.MixedReality.Toolkit;
+using RealityCollective.ServiceFramework.Interfaces;
 
 namespace MRTKExtensions.QRCodes
 {
-    public interface IQRCodeTrackingService : IMixedRealityExtensionService
+    public interface IQRCodeTrackingService : IService
     {
         event EventHandler Initialized;
         event EventHandler<string> ProgressMessageSent;

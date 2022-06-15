@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.MixedReality.Toolkit;
 using MRTKExtensions.QRCodes;
+using RealityCollective.ServiceFramework.Services;
 using TMPro;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class QRCodeDisplayController : MonoBehaviour
         {
             while (!MixedRealityToolkit.IsInitialized && Time.time < 5) ;
             return qrCodeTrackingService ??
-                   (qrCodeTrackingService = MixedRealityToolkit.Instance.GetService<IQRCodeTrackingService>());
+                   (qrCodeTrackingService = ServiceManager.Instance.GetService<IQRCodeTrackingService>());
         }
     }
 

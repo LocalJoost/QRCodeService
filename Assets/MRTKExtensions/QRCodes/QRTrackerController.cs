@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.MixedReality.Toolkit;
+using RealityCollective.ServiceFramework.Services;
 using UnityEngine;
 
 namespace MRTKExtensions.QRCodes
@@ -27,7 +28,7 @@ namespace MRTKExtensions.QRCodes
             {
                 while (!MixedRealityToolkit.IsInitialized && Time.time < 5) ;
                 return qrCodeTrackingService ??
-                       (qrCodeTrackingService = MixedRealityToolkit.Instance.GetService<IQRCodeTrackingService>());
+                       (qrCodeTrackingService = ServiceManager.Instance.GetService<IQRCodeTrackingService>());
             }
         }
 
