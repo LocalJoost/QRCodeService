@@ -26,7 +26,7 @@ namespace MRTKExtensions.QRCodes
         {
             get
             {
-                while (!MixedRealityToolkit.IsInitialized && Time.time < 5) ;
+                while (!ServiceManager.Instance.IsInitialized && Time.time < 5) ;
                 return qrCodeTrackingService ??
                        (qrCodeTrackingService = ServiceManager.Instance.GetService<IQRCodeTrackingService>());
             }
