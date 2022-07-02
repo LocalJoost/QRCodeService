@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.MixedReality.Toolkit.Utilities;
+using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
-#if WINDOWS_UWP
-#endif
 
 namespace MRTKExtensions.QRCodes
 {

@@ -1,7 +1,7 @@
 ﻿using System;
-using Microsoft.MixedReality.Toolkit.Utilities;
 using UnityEngine;
 using Microsoft.MixedReality.OpenXR;
+using Microsoft.MixedReality.Toolkit;
 
 namespace MRTKExtensions.QRCodes
 {
