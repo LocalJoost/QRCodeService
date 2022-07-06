@@ -16,11 +16,11 @@ namespace MRTKExtensions.QRCodes
         private AudioSource audioSource;
         private GameObject markerDisplay;
         private QRInfo lastMessage;
-        private int trackingCounter;
-
+   
         public bool IsTrackingActive { get; private set; } = true;
 
         private IQRCodeTrackingService qrCodeTrackingService;
+
         private IQRCodeTrackingService QRCodeTrackingService
         {
             get
@@ -45,9 +45,9 @@ namespace MRTKExtensions.QRCodes
             audioSource = markerHolder.gameObject.GetComponent<AudioSource>();
 
             QRCodeTrackingService.QRCodeFound += ProcessTrackingFound;
-            spatialGraphCoordinateSystemSetter.PositionAcquired += SetScale;
-            spatialGraphCoordinateSystemSetter.PositionAcquisitionFailed += 
-                (s,e) => ResetTracking();
+            spatialGraphCoordinateSystemSetter.PositionAcquired += SetPosition;
+            spatialGraphCoordinateSystemSetter.PositionAcquisitionFailed +=
+                (s, e) => ResetTracking();
 
 
             if (QRCodeTrackingService.IsInitialized)
@@ -76,33 +76,28 @@ namespace MRTKExtensions.QRCodes
             {
                 markerDisplay.SetActive(false);
                 IsTrackingActive = true;
-                trackingCounter = 0;
             }
         }
 
         private void ProcessTrackingFound(object sender, QRInfo msg)
         {
-            if ( msg == null || !IsTrackingActive)
+            if (msg == null || !IsTrackingActive )
             {
                 return;
             }
 
             lastMessage = msg;
 
-            if (msg.Data == locationQrValue)
+            if (msg.Data == locationQrValue && Math.Abs((DateTimeOffset.UtcNow - msg.LastDetectedTime.UtcDateTime).TotalMilliseconds) < 200)
             {
-                if (trackingCounter++ == 2)
-                {
-                    IsTrackingActive = false;
-                    spatialGraphCoordinateSystemSetter.SetLocationIdSize(msg.SpatialGraphNodeId,
-                        msg.PhysicalSideLength);
-                }
+                spatialGraphCoordinateSystemSetter.SetLocationIdSize(msg.SpatialGraphNodeId,
+                    msg.PhysicalSideLength);
             }
         }
 
-
-        private void SetScale(object sender, Pose pose)
+        private void SetPosition(object sender, Pose pose)
         {
+            IsTrackingActive = false;
             markerHolder.localScale = Vector3.one * lastMessage.PhysicalSideLength;
             markerDisplay.SetActive(true);
             PositionSet?.Invoke(this, pose);
