@@ -14,4 +14,5 @@ public class QRContentPrefab
 {
     public string QRText;
     public GameObject Prefab;
+
 }
