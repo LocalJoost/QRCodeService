@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a384337e368e04798dc8d56d943484, type: 3}
+  m_Name: new ReferenceQRTextLibrary
+  m_EditorClassIdentifier: 
+  QRContentPrefabs:
+  - QRText: Cube
+    Prefab: {fileID: 2871525465254913617, guid: 1b16c51d2f758b648af8c717a350304b,
+      type: 3}
+  - QRText: Sphere
+    Prefab: {fileID: 6450580701072103489, guid: 2951bff8a74effe418bff3e85269c9a6,
+      type: 3}

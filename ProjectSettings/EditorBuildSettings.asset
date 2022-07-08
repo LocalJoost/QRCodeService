@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/App/Scenes/SampleScene2.unity
-    guid: cc3005463c5aeae4e9451ff305de48ee
-  m_configObjects: {}
+    path: Assets/App/Scenes/MultiQRTrackingExample.unity
+    guid: bc4064305f3f54b4f855564f7a2b1617
+  m_configObjects:
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 2dd16c1a39a9fc94aaf0dd06cbc7c51e,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 28b9d1fd88adcad47ac99cf86453de9b,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: a98d0fa9c3657174cb62f300468e2d8a,
+      type: 2}

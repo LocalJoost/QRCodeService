@@ -4,7 +4,7 @@ using Microsoft.MixedReality.Toolkit;
 namespace MRTKExtensions.QRCodes
 {
 	[MixedRealityServiceProfile(typeof(IQRCodeTrackingService))]
-	[CreateAssetMenu(fileName = "QRCodeTrackingServiceProfile", menuName = "MixedRealityToolkit/QRCodeTrackingService Configuration Profile")]
+	[CreateAssetMenu(fileName = "QRCodeTrackingServiceProfile", menuName = "MRTKExtensions/QRCodeTrackingService Configuration Profile")]
 	public class QRCodeTrackingServiceProfile : BaseMixedRealityProfile
 	{
         [SerializeField] 
