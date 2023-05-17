@@ -6,8 +6,8 @@ namespace MRTKExtensions.QRCodes
 {
 	[CreateAssetMenu(fileName = "QRCodeTrackingServiceProfile", 
 		menuName = "MRTKExtensions/QRCodeTrackingService Configuration Profile")]
-	public class QRCodeTrackingServiceProfile : BaseServiceProfile<IServiceDataProvider>
-	{
+	public class QRCodeTrackingServiceProfile : BaseServiceProfile<IQRCodeTrackingService>
+    {
         [SerializeField] 
 		[Tooltip("Number of seconds before retrying to get access to the camera")]
         private int accessRetryTime = 5000;
