@@ -9,24 +9,29 @@ namespace MRTKExtensions.Visualization
         [EnumFlags]
         [SerializeField]
         private VisualizationEnvironment environment = VisualizationEnvironment.Editor;
-        
+
         private void Start()
         {
-            var hands = GetComponentsInChildren<HandVisualizer>();
+
+            var hands = GetComponentsInChildren<RiggedHandMeshVisualizer>();
 #if UNITY_EDITOR
             SetHandDisplayForEnvironment(hands, VisualizationEnvironment.Editor);
 #else
             SetHandDisplayForEnvironment(hands, VisualizationEnvironment.RunTime);
 #endif
         }
-        
-        private void SetHandDisplayForEnvironment(HandVisualizer[] hands, 
+
+        private void SetHandDisplayForEnvironment(RiggedHandMeshVisualizer[] hands,
             VisualizationEnvironment requestedEnvironment)
         {
-            for(var i = 0; i < hands.Length; i++)
+            for (var i = 0; i < hands.Length; i++)
             {
+#if !VRBUILD
                 hands[i].enabled = (environment & requestedEnvironment) != 0;
+#endif
             }
         }
+
+
     }
 }
