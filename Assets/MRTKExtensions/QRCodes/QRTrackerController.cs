@@ -1,5 +1,5 @@
 ﻿using System;
-using MixedReality.Toolkit;
+using System.Threading.Tasks;
 using RealityCollective.ServiceFramework.Services;
 using UnityEngine;
 
@@ -22,18 +22,13 @@ namespace MRTKExtensions.QRCodes
 
         private IQRCodeTrackingService qrCodeTrackingService;
 
-        private IQRCodeTrackingService QRCodeTrackingService
-        {
-            get
-            {
-                while (!ServiceManager.Instance.IsInitialized && Time.time < 5) ;
-                return qrCodeTrackingService ??
-                       (qrCodeTrackingService = ServiceManager.Instance.GetService<IQRCodeTrackingService>());
-            }
-        }
+        private IQRCodeTrackingService QRCodeTrackingService =>
+            qrCodeTrackingService ??= ServiceManager.Instance.GetService<IQRCodeTrackingService>();
 
-        private void Start()
+        private async Task Start()
         {
+            // Give service time to start;
+            await Task.Delay(250);
             if (!QRCodeTrackingService.IsSupported)
             {
                 return;

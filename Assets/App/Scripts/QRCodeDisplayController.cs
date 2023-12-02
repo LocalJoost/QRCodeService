@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using MRTKExtensions.QRCodes;
 using RealityCollective.ServiceFramework.Services;
 using TMPro;
@@ -22,22 +23,17 @@ public class QRCodeDisplayController : MonoBehaviour
 
     private QRInfo lastSeenCode;
 
-    private IQRCodeTrackingService QRCodeTrackingService
-    {
-        get
-        {
-            while (!ServiceManager.Instance.IsInitialized && Time.time < 5) ;
-            return qrCodeTrackingService ??
-                   (qrCodeTrackingService = ServiceManager.Instance.GetService<IQRCodeTrackingService>());
-        }
-    }
+    private IQRCodeTrackingService QRCodeTrackingService =>
+        qrCodeTrackingService ??= ServiceManager.Instance.GetService<IQRCodeTrackingService>();
 
-    private void Start()
+    private async Task Start()
     {
         menu.SetActive(false);
+
+        // Give service time to start;
+        await Task.Delay(250);
         if (!QRCodeTrackingService.IsSupported)
         {
-            
             return;
         }
 
