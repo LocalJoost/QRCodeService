@@ -6,6 +6,7 @@ Before opening issues:
 - please pull this MRKT3 branch first
 - Use the same Unity version I used (2021.3.23f1)
 - Deploy in a HoloLens 2 using the _Master / ARM64_ configuration. _Nothing else works_
+
 ![image](https://github.com/LocalJoost/QRCodeService/assets/4129183/40002624-ffbf-4e59-abb5-b486c69eb97e)
 - Use Minimum target platform 10.0.18362.0
 
