@@ -1,5 +1,5 @@
-﻿using Microsoft.MixedReality.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
+﻿using MixedReality.Toolkit;
+using MixedReality.Toolkit.Input;
 using UnityEngine;
 
 namespace MRTKExtensions.Visualization

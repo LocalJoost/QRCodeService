@@ -1,5 +1,4 @@
-﻿using Microsoft.MixedReality.Toolkit;
-using MRTKExtensions.QRCodes;
+﻿using MRTKExtensions.QRCodes;
 using RealityCollective.ServiceFramework.Services;
 using TMPro;
 using UnityEngine;

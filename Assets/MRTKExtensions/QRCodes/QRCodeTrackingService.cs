@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.MixedReality.QR;
-using Microsoft.MixedReality.Toolkit;
+using MixedReality.Toolkit;
 using MRKTExtensions.Utilities;
 using RealityCollective.ServiceFramework.Services;
 using UnityEngine;
