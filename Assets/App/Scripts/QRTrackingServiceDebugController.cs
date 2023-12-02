@@ -2,7 +2,6 @@
 using MRTKExtensions.QRCodes;
 using RealityCollective.ServiceFramework.Services;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 
 public class QRTrackingServiceDebugController : MonoBehaviour
