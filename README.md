@@ -1,9 +1,19 @@
 # QRCodeService
-Show a MRTK2 service to read (and position) QR codes using HoloLens 2
+Show an MRTK3 service to read (and position) QR codes using HoloLens 2
+Upgraded for latest version of MRTK3 GA.
 
-PLEASE PLEASE PLEASE before opening issues: 
-- [read this article first](https://localjoost.github.io/Reading-QR-codes-with-an-MRTK2-Extension-Service/), 
-- [then read this article](https://localjoost.github.io/Positioning-QR-codes-in-space-with-HoloLens-2-building-a-'poor-man's-Vuforia'/), especially the build instructions at the end of the article
-- And for this specific branch, [read this as well](https://localjoost.github.io/Upgrading-reading-and-positioning-QR-codes-with-HoloLens-2-to-Unity-2020-+-OpenXR-plugin/)
+Before opening issues:
+- please pull this MRKT3 branch first
+- Use the same Unity version I used (2021.3.23f1)
+- Deploy in a HoloLens 2 using the _Master / ARM64_ configuration. _Nothing else works_
+![image](https://github.com/LocalJoost/QRCodeService/assets/4129183/40002624-ffbf-4e59-abb5-b486c69eb97e)
+- Use Minimum target platform 10.0.18362.0
+
+_Maybe_ other versions work, these settings works _for sure_.
+
+As far as I know:
+- Deploying for anything else than Master / ARM64 either doesn't work at all, or is too slow to be useful
+- It does not work in the editor, and it doesn't work with Holographic Remoting either.
+- If you use different Unity or SDK versions, you are on your own. 
 
 It works. It _really_ works. All of it. 
