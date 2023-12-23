@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spatialGraphCoordinateSystemSetter: {fileID: 4033510614053200618}
-  locationQrValue: https://localjoost.github.io
+  locationQrValue: 
 --- !u!1 &4033510612879982527
 GameObject:
   m_ObjectHideFlags: 0
