@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "openupm-cli": "^1.19.1"
+  }
+}

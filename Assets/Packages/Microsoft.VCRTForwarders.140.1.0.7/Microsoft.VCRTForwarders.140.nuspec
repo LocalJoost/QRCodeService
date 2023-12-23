@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.VCRTForwarders.140</id>
+    <version>1.0.7</version>
+    <title>VCRT 140 App-Local DLL Forwarders</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Microsoft/vcrt-forwarders/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/vcrt-forwarders</projectUrl>
+    <iconUrl>http://go.microsoft.com/fwlink/?LinkID=288890</iconUrl>
+    <description>App-local DLLs that forward to runtime components of Visual C++ libraries which are required to run Visual C++ applications. The runtime components being forwarded to should already be installed on a given machine, this can be done using the Visual C++ Redistributable Packages https://aka.ms/AA4pp63. See https://github.com/Microsoft/vcrt-forwarders for more details.</description>
+    <releaseNotes>1.0.7
+            Sign forwarder DLLs
+
+            1.0.6
+            Added support for custom configurations
+
+            1.0.5
+            Added support for MSBuildForUnity
+
+            1.0.4
+            Update Unity support to use .asmdef files
+
+            1.0.3
+            Release version
+
+            1.0.2-rc
+            Added support NuGet for Unity
+
+            1.0.1-rc
+            Added ARM64 Forwarding DLLs
+
+            1.0.0-rc
+            Pre-release App Local VCRT 140 DLLs</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <tags>vcrt forwarders native winrt vclibs</tags>
+  </metadata>
+</package>

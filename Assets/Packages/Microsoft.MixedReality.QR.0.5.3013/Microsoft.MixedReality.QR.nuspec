@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.MixedReality.QR</id>
+    <version>0.5.3013</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>http://aka.ms/MR-QR</projectUrl>
+    <iconUrl>https://www.nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <description>SDK for detecting QR codes on Windows Mixed Reality devices. Provides the location, size, and contents of detected codes, updated in real time.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>MixedReality QR QRCodeWatcher</tags>
+    <dependencies>
+      <group>
+        <dependency id="Microsoft.VCRTForwarders.140" version="1.0.5" />
+      </group>
+      <group targetFramework="UAP0.0" />
+      <group targetFramework="native0.0" />
+    </dependencies>
+    <references>
+      <group targetFramework="UAP10.0.18362">
+        <reference file="Microsoft.MixedReality.QR.DotNet.dll" />
+      </group>
+    </references>
+  </metadata>
+</package>
