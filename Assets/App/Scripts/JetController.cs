@@ -4,16 +4,19 @@ using UnityEngine;
 public class JetController : MonoBehaviour
 {
     [SerializeField]
-    private QRTrackerController trackerController;
+    private BaseTrackerController trackerController;
+
+    private Transform childObj;
 
     private void Start()
     {
-        trackerController.PositionSet += PoseFound;
+        childObj = transform.GetChild(0);
+        childObj.gameObject.SetActive(false);
+        trackerController.PositionSet.AddListener(PoseFound);
     }
 
-    private void PoseFound(object sender, Pose pose)
+    private void PoseFound(Pose pose)
     {
-        var childObj = transform.GetChild(0);
         childObj.SetPositionAndRotation(pose.position, pose.rotation);
         childObj.gameObject.SetActive(true);
     }

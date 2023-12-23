@@ -23,5 +23,10 @@ namespace MRTKExtensions.QRCodes
         [Tooltip("Number of debug message lines")]
         private int debugMessages = 10;
         public int DebugMessages => debugMessages;
+        
+        [SerializeField]
+        [Tooltip("Auto enable tracking on startup")]
+        private bool autoEnable = false;
+        public bool AutoEnable => autoEnable;
     }
 }

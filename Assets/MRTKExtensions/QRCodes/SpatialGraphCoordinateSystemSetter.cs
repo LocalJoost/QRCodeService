@@ -17,7 +17,7 @@ namespace MRTKExtensions.QRCodes
             locationIdSizes.Enqueue(new Tuple<Guid, float>(spatialGraphNodeId, physicalSideLength));
         }
 
-        void Update()
+        private void Update()
         {
             if (locationIdSizes.Any())
             {

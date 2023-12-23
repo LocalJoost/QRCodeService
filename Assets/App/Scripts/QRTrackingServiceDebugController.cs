@@ -20,29 +20,6 @@ public class QRTrackingServiceDebugController : MonoBehaviour
         await Task.Delay(250);
         DisplayMessage(QRCodeTrackingService.ProgressMessages);
         QRCodeTrackingService.ProgressMessageSent += QRCodeTrackingService_ProgressMessageSent;
-        if (!QRCodeTrackingService.IsSupported)
-        {
-            return;
-        }
-
-        if (QRCodeTrackingService.IsInitialized)
-        {
-            StartTracking();
-        }
-        else
-        {
-            QRCodeTrackingService.Initialized += QRCodeTrackingService_Initialized;
-        }
-    }
-
-    private void QRCodeTrackingService_Initialized(object sender, System.EventArgs e)
-    {
-        StartTracking();
-    }
-
-    private void StartTracking()
-    {
-        QRCodeTrackingService.Enable();
     }
 
     private void QRCodeTrackingService_ProgressMessageSent(object sender, string e)

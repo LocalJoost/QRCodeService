@@ -17,7 +17,7 @@ MonoBehaviour:
       reference: dd1c8edc-8888-4510-872a-ced01fca424a
     name: QR Code Tracking Service
     priority: 0
-    profile: {fileID: 11400000, guid: 6f0177b1a3d0d5149893c0c5f6b71e4f, type: 2}
+    profile: {fileID: 11400000, guid: 775165624052afd498b0e5ed09c319c9, type: 2}
     platformEntries:
       runtimePlatforms:
       - reference: 16a3125f-31d5-4ec6-a120-8be889a74d27

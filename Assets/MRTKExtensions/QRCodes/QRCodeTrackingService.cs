@@ -12,7 +12,7 @@ namespace MRTKExtensions.QRCodes
     [System.Runtime.InteropServices.Guid("dd1c8edc-8888-4510-872a-ced01fca424a")]
     public class QRCodeTrackingService : BaseServiceWithConstructor, IQRCodeTrackingService
     {
-        private QRCodeTrackingServiceProfile profile;
+        private readonly QRCodeTrackingServiceProfile profile;
         public QRCodeTrackingService(string name, uint priority, QRCodeTrackingServiceProfile profile) 
             : base(name, priority)
         {
@@ -56,6 +56,7 @@ namespace MRTKExtensions.QRCodes
                     await capabilityTask.AwaitWithTimeout(profile.AccessRetryTime, 
                         ProcessTrackerCapabilityReturned,
                      () => _ = InitializeTracker());
+
                 }
                 else
                 {
@@ -75,6 +76,7 @@ namespace MRTKExtensions.QRCodes
                 InitializationFail($"QR tracker could not be initialized: {ast}");
             }
             accessStatus = ast;
+            SendProgressMessage($"QR tracker capability {ast} returned");
         }
 
         public override void Update()
@@ -90,13 +92,17 @@ namespace MRTKExtensions.QRCodes
             qrTracker = new QRCodeWatcher();
             qrTracker.Updated += QRCodeWatcher_Updated;
             IsInitialized = true;
-            Initialized?.Invoke(this, new EventArgs());
+            Initialized?.Invoke(this, EventArgs.Empty);
             SendProgressMessage("QR tracker initialized");
+            if( profile.AutoEnable)
+            {
+                Enable();
+            }
         }
 
         private void QRCodeWatcher_Updated(object sender, QRCodeUpdatedEventArgs e)
         {
-            SendProgressMessage($"Found QR code {e.Code.Data}");
+            //SendProgressMessage($"Found QR code {e.Code.Data}");
             QRCodeFound?.Invoke(this, new QRInfo(e.Code));
         }
 

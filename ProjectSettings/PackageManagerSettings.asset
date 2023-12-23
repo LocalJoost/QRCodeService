@@ -39,15 +39,17 @@ MonoBehaviour:
     m_Name: package.openupm.com
     m_Url: https://package.openupm.com
     m_Scopes:
+    - com.github-glitchenzo.nugetforunity
+    - com.openupm
     - com.realitycollective
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
-  m_UserSelectedRegistryName: Microsoft Mixed Reality
+  m_UserSelectedRegistryName: package.openupm.com
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -828
+    m_UserModificationsInstanceId: -830
     m_OriginalInstanceId: -832
   m_LoadAssets: 0
