@@ -1166,6 +1166,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453786822902350438, guid: 410754167d1d6e546a79c9a207fab5f6,
         type: 3}
+      propertyPath: setRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453786822902350438, guid: 410754167d1d6e546a79c9a207fab5f6,
+        type: 3}
       propertyPath: trackerController
       value: 
       objectReference: {fileID: 1749746613}

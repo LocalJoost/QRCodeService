@@ -1,6 +1,5 @@
 using UnityEngine;
 using RealityCollective.ServiceFramework.Definitions;
-using RealityCollective.ServiceFramework.Interfaces;
 
 namespace MRTKExtensions.QRCodes
 {
@@ -16,8 +15,7 @@ namespace MRTKExtensions.QRCodes
         [SerializeField]
         [Tooltip("Expose progress and debug messages")]
         private bool exposedProgressMessages = true;
-        public bool
-        ExposedProgressMessages => exposedProgressMessages;
+        public bool ExposedProgressMessages => exposedProgressMessages;
 
         [SerializeField]
         [Tooltip("Number of debug message lines")]

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MRTKExtensions.QRCodes
 {
-    public class ContinuousQrTrackerController : BaseTrackerController
+    public class ContinuousQRTrackerController : BaseTrackerController
     {
         [SerializeField]
         private SpatialGraphCoordinateSystemSetter spatialGraphCoordinateSystemSetter;

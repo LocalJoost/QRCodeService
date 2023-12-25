@@ -99,6 +99,5 @@ namespace MRTKExtensions.QRCodes
             PositionSet?.Invoke( pose);
             audioSource.Play();
         }
-
     }
 }

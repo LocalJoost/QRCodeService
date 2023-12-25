@@ -9,6 +9,9 @@ namespace MRTKExtensions.QRCodes
         [SerializeField]
         private BaseTrackerController trackerController;
         
+        [SerializeField]
+        private bool setRotation = true;
+        
         private AudioSource audioSource;
 
         private Transform childObj;
@@ -23,7 +26,15 @@ namespace MRTKExtensions.QRCodes
 
         private void PoseFound(Pose pose)
         {
-            childObj.SetPositionAndRotation(pose.position, pose.rotation);
+            if (setRotation)
+            {
+                childObj.SetPositionAndRotation(pose.position, pose.rotation);
+            }
+            else
+            {
+                childObj.position = pose.position;
+            }
+
             childObj.gameObject.SetActive(true);
             Task.Run(PlaySound);
         }
