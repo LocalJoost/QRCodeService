@@ -22,7 +22,6 @@ namespace MRTKExtensions.QRCodes
         public event EventHandler Initialized;
         public event EventHandler<QRInfo> QRCodeFound;
         public event EventHandler<string> ProgressMessageSent;
-
         public bool InitializationFailed { get; private set; }
         public string ErrorMessage { get; private set; }
         public bool IsSupported { get; private set; }
@@ -32,10 +31,8 @@ namespace MRTKExtensions.QRCodes
 
         private QRCodeWatcher qrTracker;
         private QRCodeWatcherAccessStatus accessStatus;
-
         private int initializationAttempt = 0;
-
-        private readonly List<string> messageList = new List<string>();
+        private readonly List<string> messageList = new();
 
 
         public override void Initialize()

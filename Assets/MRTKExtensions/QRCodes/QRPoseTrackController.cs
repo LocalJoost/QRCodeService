@@ -13,7 +13,6 @@ namespace MRTKExtensions.QRCodes
         private bool setRotation = true;
         
         private AudioSource audioSource;
-
         private Transform childObj;
 
         private void Start()
