@@ -53,7 +53,6 @@ namespace MRTKExtensions.QRCodes
                     await capabilityTask.AwaitWithTimeout(profile.AccessRetryTime, 
                         ProcessTrackerCapabilityReturned,
                      () => _ = InitializeTracker());
-
                 }
                 else
                 {

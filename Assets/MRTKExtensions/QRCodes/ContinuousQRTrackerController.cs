@@ -62,7 +62,7 @@ namespace MRTKExtensions.QRCodes
             ResetTracking(true);
         }
         
-        private void ResetTracking(bool delayed = true)
+        private void ResetTracking(bool delayed)
         {
             if (delayed)
             {
